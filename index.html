@@ -14,7 +14,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 </style>
-  <body class="w3-white">
+  <body class="w3-light-grey">
 
 <body>
   
@@ -27,73 +27,75 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>Audio Encoder Decoder</h1>
+      <h3> One second of audio </h3>
          <h5>In this example, we hear one second of piano music with one-third of a second of audio cut out. </h5>
 
             <ul style="list-style-type:none">
                 <li><audio controls>
                     <source src="original3.wav" type="audio/wav">
                     Your browser does not support the audio element.
-                    </audio> Left: Ground truth
+                    </audio> Left: Original Signal
                 </li>
 
                 <li><audio controls>
                     <source src="audio_examples/faded/nsynth_3_rec.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
-                    </audio> Center: Magnitude (35.2 dB SNRms)
+                    </audio> Center: Signal with missing audio
                 </li>
                 <li><audio controls>
                     <source src="audio_examples/faded/nsynth_3_complex_rec.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
-                    </audio> Right: Complex (29.6 dB SNRms)
+                    </audio> Right: Inpainted Audio
+                </li>
+            </ul>
+      <h3> Three seconds of audio </h3>
+        <h5>In this example, we hear three second of piano music with one second of audio cut out.</h5>
+
+             <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="original3.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Left: Original Signal
+                </li>
+
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Signal with missing audio
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Inpainted Audio
                 </li>
             </ul>
     </div>
   </div>
 </div>
   
-  <!-- 3 second Grid -->
-<div id="F-E" class="w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-twothird">
-      <h1>Network Applied to Noisy Audio</h1>
-         <h5>In this example, we hear one second of piano music with one-third of a second of audio cut out.</h5>
-
-            <ul style="list-style-type:none">
-                <li><audio controls>
-                    <source src="audio_examples/faded/nsynth_3_or.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                    </audio> Left: Ground truth
-                </li>
-
-                <li><audio controls>
-                    <source src="audio_examples/faded/nsynth_3_rec.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                    </audio> Filled in audio
-                </li>
-            </ul>
-    </div>
-  </div>
-</div>
-
 <!-- Third Grid -->
 <div id="F-E" class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>Network Applied to Noisy Audio</h1>
-
          <h5>Given 12 seconds of audio with noise added to the signal, we are able to replace the noisy sections with the network.</h5>
 
-            <ul style="list-style-type:none">
+          <ul style="list-style-type:none">
                 <li><audio controls>
-                    <source src="audio_examples/faded/nsynth_3_or.mp3" type="audio/mpeg">
+                    <source src="original3.wav" type="audio/wav">
                     Your browser does not support the audio element.
-                    </audio> Left: Ground truth
+                    </audio> Left: Original Signal
                 </li>
 
                 <li><audio controls>
                     <source src="audio_examples/faded/nsynth_3_rec.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
-                    </audio> Filled in audio
+                    </audio> Center: Signal with missing audio
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Inpainted Audio
                 </li>
             </ul>
     </div>
