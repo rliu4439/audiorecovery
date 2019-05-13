@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<title>Audio context encoder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+  <body class="w3-light-grey">
+
+<body>
+  
+<!-- Header -->
+<header class="w3-container w3-light-blue w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">Audio Recovery</h1>
+  <h1 class="w3-margin">Stat157</h1>
+  <h1 class="w3-margin">Lillian Du, Linda Du, Ryan Liu</h1>
+</header>
+
+<div id="F-E" class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Audio Encoder Decoder</h1>
+      <h3> One second of audio </h3>
+         <h5>In this example, we hear one second of piano music with one-third of a second of audio cut out. </h5>
+
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="original1.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Original Signal
+                </li>
+
+                <li><audio controls>
+                    <source src="cut1.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Signal with missing audio
+                </li>
+                <li><audio controls>
+                     <source src="recovered1.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Inpainted Audio
+                </li>
+            </ul>
+      <h3> Three seconds of audio </h3>
+        <h5>In this example, we hear three second of piano music with one second of audio cut out.</h5>
+        <h4> Note: These audio files are softer than those in the previous section so you'll need to increase your speaker's volume. </h4>
+
+             <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="original2.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Original Signal
+                </li>
+
+                <li><audio controls>
+                    <source src="cut2.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Signal with missing audio
+                </li>
+                <li><audio controls>
+                     <source src="recovered2.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Inpainted Audio
+                </li>
+            </ul>
+    </div>
+  </div>
+</div>
+  
+<!-- Third Grid -->
+<div id="F-E" class="w3-row-padding w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Network Applied to Noisy Audio</h1>
+         <h5>Given 12 seconds of audio with noise added to the signal, we are able to replace the noisy sections using our network.</h5>
+
+          <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="app_original3.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Original Signal
+                </li>
+
+                <li><audio controls>
+                    <source src="app_corrupt3.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Signal with missing audio
+                </li>
+                <li><audio controls>
+                     <source src="app_fixed3.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio>Inpainted Audio
+                </li>
+            </ul>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
