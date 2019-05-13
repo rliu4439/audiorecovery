@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<title>Audio context encoder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="#G-E" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Good examples</a>
+    <a href="#F-E" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Faded examples</a>
+    <a href="#N-E" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Noisy examples</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#G-E" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Good examples</a>
+    <a href="#F-E" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Faded examples</a>
+    <a href="#N-E" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Noisy examples</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">Audio context encoder</h1>
+    <h5 class="w3-xlarge">This website accompanies the work presented as a <a href="https://www.researchgate.net/publication/328600925_A_context_encoder_for_audio_inpainting" target="_blank">pre-print here</a>.</h5>
+    <h5 class="w3-xlarge">The code used can be found <a href="https://github.com/andimarafioti/audioContextEncoder" target="_blank">here</a>. <a href="https://github.com/andimarafioti/audioContextEncoder" target="_blank" class="fa fa-github w3-hover-opacity"></a></h5>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h5 class="w3-padding-32">
+        We studied the ability of deep neural networks (DNNs) to restore missing audio content based on its context. We focused on gaps in the range of tens of milliseconds, a condition which has not received much attention yet. The proposed DNN structure was trained on audio signals containing music and musical instruments, separately, with 64-ms long gaps. The input to the DNN was the context, i.e., the signal surrounding the gap, transformed into time-frequency (TF) coefficients. Two networks were analyzed, a DNN with complex-valued TF coefficient output and another one producing magnitude TF coefficient output, both based on the same network architecture. We found significant differences in the inpainting results between the two DNNs. In particular, we discuss the observation that the complex-valued DNN fails to produce reliable results outside the low frequency range. We demonstrated a generally good usability of the proposed DNN structure for generating complex audio signals like music.
+      </h5>
+
+      Encoder architecture:
+      <h1><img src="images/encoder-signal.jpg" alt="Good spectrogram" width="1000"></h1>
+
+      Decoder architecture:
+      <h1><img src="images/decoder-signal.jpg" alt="Good spectrogram" width="1000"></h1>
+
+      <h5 class="w3-padding-32">
+        Now we introduce sound examples generated with the network. They are divided into three classes according to our perception of them. These are: good, noisy and faded. The faded class presents samples where we hear as if the algorithm did a fade-in and fade-out on the gap.
+      </h5>
+
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div id="G-E"  class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+
+    <div class="w3-twothird">
+      <h1>Good examples</h1>
+         <h1><img src="images/Nsynth_6.png" alt="Trumpet" width="1000"></h1>
+
+        <h5>On this example, we find a string signal with a few harmonics. Both networks achieve reconstructions which are difficult to detect.</h5>
+
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_6_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_6_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (28.7 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_6_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (20.9 dB SNRms)
+                </li>
+            </ul>
+
+         <h1><img src="images/Nsynth_7.png" alt="Trumpet" width="1000"></h1>
+
+        <h5>This example features a synthesized string signal, with several harmonics and a constant vibrato. Both networks achieve reconstructions that are difficult to detect.</h5>
+
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_7_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_7_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (29.2 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_7_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (27.3 dB SNRms)
+                </li>
+            </ul>
+
+              <h1><img src="images/Nsynth_2.png" alt="Trumpet" width="1000"></h1>
+
+        <h5>On this example, we find a trumpet signal with a lot of information on high frequencies. Neither of the networks achieve very high SNRms values, nevertheless, it is quite hard to hear any artifacts.</h5>
+
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_2_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_2_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (11.4 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_2_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (4.1 dB SNRms)
+                </li>
+            </ul>
+
+         <h1><img src="images/Nsynth_67.png" alt="Trumpet" width="1000"></h1>
+
+         <h5>On this example, we find a synthetic signal with a lot of modulations. Both networks represent this modulations in some way.
+         For the magnitude network, even on very high frequencies the modulations are still inpainted.
+         For the complex network, above 5Khz there is little information.</h5>
+
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_67_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_67_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (7.8 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/good/nsynth_67_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (5.1 dB SNRms)
+                </li>
+            </ul>
+
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid -->
+<div id="F-E" class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Faded examples</h1>
+
+        <h1><img src="images/Nsynth_3.png" alt="Trumpet" width="1000"></h1>
+
+         <h5>On this example, we find a pulsated string signal. Both networks achieve very high SNRms values, but they both present a faded artifact.
+         This is quite easy to hear for the complex network and it is not as present for the magnitude network.</h5>
+
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (35.2 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (29.6 dB SNRms)
+                </li>
+            </ul>
+
+
+      <h1><img src="images/Nsynth_17.png" alt="Trumpet" width="1000"></h1>
+
+     <h5>On this example, we find a string signal. Again we find a faded artifact that is clearer on the complex network than the magnitude network.
+     In this case, the SNRms are quite low.</h5>
+
+      <h5 class="w3-padding-32">
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_17_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_17_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (8.7 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_17_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (2.9 dB SNRms)
+                </li>
+            </ul>
+      </h5>
+
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Fourth Grid -->
+<div id="N-E" class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+
+    <div class="w3-twothird">
+      <h1>Noisy examples</h1>
+
+      <h1><img src="images/Nsynth_13.png" alt="Trumpet" width="1000"></h1>
+
+        <h5>Here we find a very low frequency synthesized signal. A clear noise burst can be heard on the gap.</h5>
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/noisy/nsynth_13_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/noisy/nsynth_13_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (13.7 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/noisy/nsynth_13_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (10.3 dB SNRms)
+                </li>
+            </ul>
+
+
+      <h1><img src="images/Nsynth_12.png" alt="Trumpet" width="1000"></h1>
+        <h5>Here we find a low frequency signal. Interestingly, the magnitude network produced a harmonic that is not present on the original signal, and which can be clearly heard.
+            The complex network's reconstruction also has a noisy characteristic, but it is not as obvious.</h5>
+
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="audio_examples/noisy/nsynth_12_or.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/noisy/nsynth_12_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (23.4 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/noisy/nsynth_12_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (24.1 dB SNRms)
+                </li>
+            </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: phase life</h1>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+  <div class="w3-xlarge w3-padding-32">
+    <a href="https://github.com/andimarafioti/audioContextEncoder" class="fa fa-github w3-hover-opacity"></a>
+ </div>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>
