@@ -20,18 +20,39 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   
 <!-- Header -->
 <header class="w3-container w3-light-blue w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Audio context encoder</h1>
+  <h1 class="w3-margin w3-jumbo">Audio Recovery</h1>
 </header>
 
 <div id="F-E" class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
-      <h1>Faded examples</h1>
+      <h1>Audio Encoder Decoder</h1>
+      <h1>Audio Encoder Decoder</h1>
+         <h5>In this example, we hear one second of piano music with one-third of a second of audio cut out. w</h5>
 
-        <h1>Channel Convolution Network</h1>
+            <ul style="list-style-type:none">
+                <li><audio controls>
+                    <source src="original3.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                    </audio> Left: Ground truth
+                </li>
 
-         <h5>On this example, we find a pulsated string signal. Both networks achieve very high SNRms values, but they both present a faded artifact.
-         This is quite easy to hear for the complex network and it is not as present for the magnitude network.</h5>
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Center: Magnitude (35.2 dB SNRms)
+                </li>
+                <li><audio controls>
+                    <source src="audio_examples/faded/nsynth_3_complex_rec.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio> Right: Complex (29.6 dB SNRms)
+                </li>
+            </ul>
+
+      
+      <h1>Audio Encoder Decoder</h1>
+      <h1>Audio Encoder Decoder</h1>
+         <h5>In this example, we hear one second of piano music with one-third of a second of audio cut out. w</h5>
 
             <ul style="list-style-type:none">
                 <li><audio controls>
